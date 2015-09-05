@@ -1,0 +1,82 @@
+Class: CIS-485 (Senior Project)
+Team Members: Immanuel, David, Dan, George
+Objective: Create a classroom clicker app
+
+
+
+Technologies
+Aspx,C# /Windows Form,Microsoft sql, xml
+Immanuel,David,Dan
+Mobile App (Android) .java
+Dan,David, Immanuel, George
+Meteor(js,css,Html)/Mango(database)
+George, Immanuel
+Php,Css,Html,Sql
+Immanuel, Dan,David,George
+Python[Flask/Django]
+Immanuel,Dan
+
+
+
+
+
+The highlighted color was the prefered technology agreed by team members
+
+Interface
+Login.aspx/ Register.aspx (After successful Login, it transition students to home page)
+Home.aspx
+About.aspx
+
+Home.aspx
+Courses registered by student (First option)
+Teachers available within the school, then they click to view questions by that specific teacher
+Either option will have the ability for students to view polls
+
+About.aspx
+Small description about project and developers
+
+
+Database Schema
+	
+	users{
+		user_seqno int PK NOTNULL 
+		id 	varchar(7)	NOT NULL 
+		username 	varchar(20)
+		f_name		varchar(20)
+		l_name		varchar(20)
+		password	varchar(20)
+		admin_yn	char(1)
+
+            }
+
+questions_answers{
+	qa_seqno	int NOTNULL PK  
+	q_no int 	
+	set_no   ***input by the teacher in the form //set first and only once
+	teacher_id FK -> users.id 
+	question 	varchar(500)
+	a1		varchar(100)
+	a2		varchar(100)
+	a3		varchar(100)
+	a4		varchar(100)
+	correct		varchar(2)
+}
+
+
+poll_results {
+set_no
+	q_no
+	student_id
+	student_name
+	response	varchar(2)
+	correct_yn	char(1)
+
+}
+
+class {(second option)
+student_id
+teacher_id
+}
+
+
+***Everything is still a work in progress and subject to change as implementations are made/attempted
