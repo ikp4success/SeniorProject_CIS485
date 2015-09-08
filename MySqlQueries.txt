@@ -1,0 +1,30 @@
+CREATE TABLE users (
+    userID int(9) NOT NULL auto_increment,
+    name VARCHAR(50) NOT NULL, 
+    date_of_birth VARCHAR(10) NOT NULL,
+    place_of_birth VARCHAR(10) NULL,
+    nationality CHAR(100) NULL,
+    info CHAR(254) NULL,
+    email VARCHAR(40) NOT NULL, 
+    pass VARCHAR(40) NOT NULL, 
+    PRIMARY KEY(userID) 
+);
+
+
+CREATE TABLE message(
+    msgID int(9) NOT NULL auto_increment,
+    username VARCHAR(50) NULL, 
+    msg CHAR(254) NOT NULL,
+    dateposted VARCHAR(50),
+    PRIMARY KEY(msgID) 
+);
+
+CREATE TABLE student_users (
+    userID int(9) NOT NULL auto_increment,
+    reg_username VARCHAR(50) NOT NULL, 
+    reg_gender CHAR(1) NOT NULL, 
+    reg_fullname CHAR(100) NULL,
+    reg_email VARCHAR(40) NOT NULL, 
+    reg_password VARCHAR(40) NOT NULL, 
+    PRIMARY KEY(userID) 
+);
