@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $reg_username = $_POST["reg_username"];
 $reg_email = $_POST["reg_email"];
 $reg_password = md5($_POST["reg_password"]);
@@ -15,14 +16,14 @@ if ($reg_password != $reg_password_confirm) {
 include "db.php";
 
 $sql = "INSERT INTO student_users (reg_username, reg_email, reg_password, reg_fullname, reg_gender) 
-VALUES('$reg_username', '$reg_email', '$reg_password', '$reg_fullname', '$reg_gender');";
-$result = mysql_query($sql, $link);
+VALUES('$reg_username', '$reg_email', '$reg_password', '$reg_fullname', '$reg_gender')";
+$result = $link->query($sql);
 
 if($result == false)
   echo '<a href="register.php">Error: cannot execute query</a>';
 else
-  header("Location: private.php");
+  header("Location: student_home.php");
 
-mysql_close($link);
+//mysql_close($link);
 exit;
 ?>
