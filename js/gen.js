@@ -24,20 +24,20 @@
   });
   
 	// Form Submission
-  $("#login-form").submit(function() {
-  	remove_loading($(this));
+  // $("#login-form").submit(function() {
+  // 	remove_loading($(this));
 		
-		if(options['useAJAX'] == true)
-		{
-			// Dummy AJAX request (Replace this with your AJAX code)
-		  // If you don't want to use AJAX, remove this
-  	  dummy_submit_form($(this));
+		// if(options['useAJAX'] == true)
+		// {
+		// 	// Dummy AJAX request (Replace this with your AJAX code)
+		//   // If you don't want to use AJAX, remove this
+  // 	  dummy_submit_form($(this));
 		
-		  // Cancel the normal submission.
-		  // If you don't want to use AJAX, remove this
-  	  return false;
-		}
-  });
+		//   // Cancel the normal submission.
+		//   // If you don't want to use AJAX, remove this
+  // 	  return false;
+		// }
+  // });
 	
 	// Register Form
 	//----------------------------------------------
@@ -72,20 +72,20 @@
   });
 
   // Form Submission
-  $("#register-form").submit(function() {
-  	remove_loading($(this));
+  // $("#register-form").submit(function() {
+  // 	remove_loading($(this));
 		
-		if(options['useAJAX'] == true)
-		{
-			// Dummy AJAX request (Replace this with your AJAX code)
-		  // If you don't want to use AJAX, remove this
-  	  dummy_submit_form($(this));
+		// if(options['useAJAX'] == true)
+		// {
+		// 	// Dummy AJAX request (Replace this with your AJAX code)
+		//   // If you don't want to use AJAX, remove this
+  // 	  dummy_submit_form($(this));
 		
-		  // Cancel the normal submission.
-		  // If you don't want to use AJAX, remove this
-  	  return false;
-		}
-  });
+		//   // Cancel the normal submission.
+		//   // If you don't want to use AJAX, remove this
+  // 	  return false;
+		// }
+  // });
 
 	// Forgot Password Form
 	//----------------------------------------------
@@ -141,16 +141,16 @@
 	// Dummy Submit Form (Remove this)
 	//----------------------------------------------
 	// This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
-  function dummy_submit_form($form)
-  {
-  	if($form.valid())
-  	{
-  		form_loading($form);
+//   function dummy_submit_form($form)
+//   {
+//   	if($form.valid())
+//   	{
+//   		form_loading($form);
   		
-  		setTimeout(function() {
-  			form_success($form);
-  		}, 2000);
-  	}
-  }
+//   		setTimeout(function() {
+//   			form_success($form);
+//   		}, 2000);
+//   	}
+//   }
 	
-})(jQuery);
+// })(jQuery);
