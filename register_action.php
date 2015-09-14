@@ -22,7 +22,7 @@ $result = $link->query($sql);
 if($result == false)
   echo '<a href="register.php">Error: cannot execute query</a>';
 else
-  header("Location: student_home.php");
+  header("Location: login.php");
 
 //mysql_close($link);
 exit;
