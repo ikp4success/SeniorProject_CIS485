@@ -8,10 +8,11 @@
 <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 <link href='css/style.css' rel='stylesheet' type='text/css'>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->
-<script src="js/gen.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- gen.js needs to make sure jquery is loaded to work-->
+<script src="js/gen.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<title></title>
 </head>
@@ -35,12 +36,12 @@
 			<div class="main-login-form">
 				<div class="login-group">
 					<div class="form-group">
-						<label for="lg_username" class="sr-only">Username</label>
-						<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="username">
+						<label for="reg_username" class="sr-only">Username</label>
+						<input pattern=".{3,50}" required title="3 to 50 characters for username" type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
 					</div>
 					<div class="form-group">
-						<label for="lg_password" class="sr-only">Password</label>
-						<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password">
+						<label for="reg_password" class="sr-only">Password</label>
+						<input pattern=".{6,40}" required title="6 to 40 characters for password" type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
 					</div>
 					<div class="form-group login-group-checkbox">
 						<input type="checkbox" id="lg_remember" name="lg_remember">
@@ -68,33 +69,33 @@
 			<div class="main-login-form">
 				<div class="login-group">
 					<div class="form-group">
-						<label for="reg_username" class="sr-only">Usernmae</label>
-						<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
+						<label for="reg_username" class="sr-only">Username</label>
+						<input pattern=".{3,50}" required title="3 to 50 characters for username" type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
 					</div>
 					<div class="form-group">
 						<label for="reg_password" class="sr-only">Password</label>
-						<input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
+						<input pattern=".{6,40}" required title="6 to 40 characters for password" type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
 					</div>
 					<div class="form-group">
 						<label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-						<input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
+						<input required="required" type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
 					</div>
 					
 					<div class="form-group">
 						<label for="reg_email" class="sr-only">Email</label>
-						<input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
+						<input required type="email" class="form-control" id="reg_email" name="reg_email" placeholder="email">
 					</div>
 					<div class="form-group">
 						<label for="reg_fullname" class="sr-only">Full Name</label>
-						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name">
+						<input pattern=".{3,100}" required title="3 to 100 characters for name" type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name">
 					</div>
 					
 					<div class="form-group login-group-checkbox">
-						<input type="radio" class="" name="reg_gender" id="male" placeholder="username">
-						<label for="male">male</label>
+						<input type="radio" class="" name="reg_gender" id="male" placeholder="username" value="M" checked>
+						<label for="male">Male</label>
 						
-						<input type="radio" class="" name="reg_gender" id="female" placeholder="username">
-						<label for="female">female</label>
+						<input type="radio" class="" name="reg_gender" id="female" placeholder="username" value="F">
+						<label for="female">Female</label>
 					</div>
 					
 					<div class="form-group login-group-checkbox">
@@ -143,6 +144,6 @@
 	<!-- end:Main Form -->
 	<footer>
 	<p>Copyright &copy; 2015 Senior Project CIS485</p>
-	<p><a href="mailto:ig@gmail.com">Contact</a></p>
+	<p><a href="mailto:CIS485@csuohio.com">Contact</a></p>
 </footer>
 </html>
