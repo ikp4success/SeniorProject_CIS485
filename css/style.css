@@ -295,13 +295,30 @@ label:hover:before {
   font-weight: bold;
 }
 
+#welcome{
+  padding: 15px 0;
+  font-size: 25px;
+  color: #CECEF6;
+}
+.sidebar-copyright{
+  padding: 50px 0;
+  font-size: 100%;
+  color: #CECEF6;
+  font-weight: bold;
+  display: table;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 footer{
   padding: 15px 0;
   font-size: 25px;
   color: #CECEF6;
   font-weight: bold;
   display: table;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
