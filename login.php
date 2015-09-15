@@ -14,7 +14,7 @@
 <!-- gen.js needs to make sure jquery is loaded to work-->
 <script src="js/gen.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title></title>
+	<title>Clicker App home Page</title>
 </head>
 <body>
 
@@ -143,7 +143,7 @@
 </body>
 	<!-- end:Main Form -->
 	<footer>
-	<p>Copyright &copy; 2015 Senior Project CIS485</p>
+	<p>Copyright &copy; 2015 Senior Project CIS485 Clicker App.</p>
 	<p><a href="mailto:CIS485@csuohio.com">Contact</a></p>
 </footer>
 </html>
