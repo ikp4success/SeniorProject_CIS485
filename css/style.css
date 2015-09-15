@@ -4,6 +4,8 @@
 Project    	: Aether
 Version		: 1.0
 Last change	: 2015/03/27
+
+Modified by Immanuel for Senior Project
 -------------------------------------------------------------------*/
 /*------------------------------------------------------------------
 [Table of contents]
@@ -321,4 +323,11 @@ footer{
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.formatbar{
+  padding: 10px 0;
+ vertical-align: middle;
+   margin: 0 auto;
+     text-align: left;
 }
