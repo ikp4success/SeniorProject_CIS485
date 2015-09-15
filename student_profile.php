@@ -10,6 +10,7 @@
 	<script src="js/gen.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
+	<link href="css/profilestyle.css" rel="stylesheet" media="all" />
 	<body style="background-color:#D8D8D8;">
 		<div id="container">
 			<div id="wrapper">
@@ -17,42 +18,75 @@
 				<!-- Sidebar -->
 				<div id="sidebar-wrapper">
 					<ul class="sidebar-nav">
-						<li class="sidebar-brand" style="background-color:#045FB4;"><a style="color:#FFFFFF;" href="student_profile.php"> Welcome, <?php 
+						<li style="background-color:#045FB4;"><a style="color:#FFFFFF;" href="student_profile.php"> 	<div class="formatbar">
+								<img src="images/student-32.png">
+							 Welcome, <?php 
 						session_start();
 
 						if (isset($_SESSION['reg_username'])) {
 							echo  $_SESSION['reg_username'];
 						} 
-						?></a></li>
+						?>
+							</div></a></li>
+					</li>
 						<li>
+							
+							
 							<a href="student_home.php">
-								Student Home
+								<div class="formatbar">
+								<img src="images/home.png">
+								 Student Home
+								</div>
 							</a>
+							
 						</li>
 						<li>
-							<a href="#">Questions</a>
+							
+							<a href="#">
+								<div class="formatbar">
+								<img src="images/question.png">
+								 Questions
+								</div>
+							</a>
+							
 						</li>
 						<li>
-							<a href="#">Answers</a>
+							
+							<a href="#">
+								<div class="formatbar">
+								<img src="images/book.png">
+								  Answers</div></a>
+							
 						</li>
 						<li>
-							<a href="#">Grade</a>
+							
+							<a href="#"><div class="formatbar">
+								<img src="images/letter.png">  Grade</div></a>
+							
 						</li>
 						<li>
-							<a href="#">Events</a>
+							
+							<a href="about.php"><div class="formatbar">
+								<img src="images/about.png">  About	</div></a>
+						
 						</li>
-						<li>
-							<a href="#">About</a>
-						</li>
-						<li>
-							<a href="#">Services</a>
-						</li>
-							<li><a href="exit.php" title="Login private area">LogOff</a></li>
+						
+							<li>
+								
+								<a href="exit.php" title="Login private area">
+									<div class="formatbar">
+								<img src="images/exit.png">
+									  LogOff
+										</div>
+								</a>
+							
+							</li>
+
 						
 
 					</ul>
 					<div class="sidebar-nav-bottom">
-							<p class="sidebar-copyright">&copy; 2015 Senior Project CIS485 .Clicker App. <a href="mailto:CIS485@csuohio.com">Contact</a></p>
+							<p class="sidebar-copyright">&copy; 2015 Senior Project CIS485 Clicker App. <a href="mailto:CIS485@csuohio.com">Contact</a></p>
 						</div>
 				</div>
 				<!-- /#sidebar-wrapper -->
@@ -62,8 +96,18 @@
 					<div class="col-lg-12">
 						<div class="row">
 							<div>
-								<p>
-									<td>Student User Registration details -- UNDER CONSTRUCTION</td>
+
+								<div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Student Profile</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="Student User Pic" src="images/university1.png" class="img-circle img-responsive"> </div>
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+
 
 									<?php
 									session_start();
@@ -84,13 +128,13 @@
 
 									if($row=mysqli_fetch_array($result)){
 
-										echo '<p> Username: '.$row["reg_username"].'</p>';
+										echo '<tr><td> Username: '.$row["reg_username"].'</td></tr>';
 										echo "\n";
-										echo '<p> Fullname: '.$row["reg_fullname"].'</p>';
+										echo '<tr><td> Fullname: '.$row["reg_fullname"].'</td></tr>';
 										echo "\n";
-										echo '<p> Gender: '.$row["reg_gender"].'<p>';
+										echo '<tr><td> Gender: '.$row["reg_gender"].'</td></tr>';
 										echo "\n";
-										echo '<p> Email: '.$row["reg_email"].'</p>';
+										echo '<tr><td> Email: '.$row["reg_email"].'</td></tr>';
 										echo "\n";
 
 
@@ -98,7 +142,18 @@
 
 								
 								?> 
-							</p>
+						
+                     
+                     
+                    </tbody>
+                  </table>
+                  
+                  <a href="#" class="btn btn-primary">Edit Information</a>
+                  <a href="#" class="btn btn-primary">Home</a>
+                </div>
+              </div>
+            </div>
+				</div>			
 
 						</div>
 						
