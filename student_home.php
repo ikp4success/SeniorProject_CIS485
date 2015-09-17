@@ -27,7 +27,9 @@
 
 						if (isset($_SESSION['reg_username'])) {
 							echo  $_SESSION['reg_username'];
-						} 
+						}
+									else
+									echo "DemoUser";
 						?>
 							</div>
 
