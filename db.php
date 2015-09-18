@@ -14,10 +14,16 @@
 
 
 <?php
-// $link = mysql_connect("localhost" , "a2199089_CIS485", "asdf12345");
-$link = new mysqli("mysql5.000webhost.com","a2199089_CIS485","12345_CIS485","a2199089_CIS485");
+// setup mysql server variable
+$servername = "mysql5.000webhost.com";
+$username = "a2199089_CIS485";
+$password = "12345_CIS485";
+$tablename ="a2199089_CIS485";
 
-// if($link == false) 
+// $link = mysql_connect("localhost" , "a2199089_CIS485", "asdf12345");
+$link = new mysqli($servername,$username,$password,$tablename);
+
+// if($link == false)
 if($link->connect_error){
   //echo "Error: can't connect to database server";
   die("Connection failed: ". $link->connect_error);
