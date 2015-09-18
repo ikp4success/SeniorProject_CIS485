@@ -1,0 +1,14 @@
+# Do not remove this line, otherwise mod_rewrite rules will stop working
+RewriteBase /
+
+
+
+##
+#RewriteEngine On
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ login.php/$1 [L]
+
+##301 Redirect default.php
+#Redirect 301 / login.php

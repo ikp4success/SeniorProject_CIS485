@@ -261,11 +261,19 @@ a:focus {
     padding-top: 100px;
 }
 
+<<<<<<< HEAD
 .download-section {
     width: 100%;
     padding: 50px 0;
     color: #fff;
     background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
+=======
+.contact-section {
+    width: 100%;
+    padding: 50px 0;
+    color: #fff;
+    background: url(../images/downloads-bg.jpg) no-repeat center center scroll;
+>>>>>>> dev
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
