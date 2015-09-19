@@ -21,7 +21,7 @@ $sql = "INSERT INTO student_users (reg_username, reg_fullname, reg_gender, reg_e
 $result = $link->query($sql);
 
 
-if($result == false)
+if($result === false)
   echo '<a href="register.php">Error: cannot execute query</a>';
 else
   header("Location: login.php");
