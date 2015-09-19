@@ -6,7 +6,7 @@ $reg_password = md5($_POST["reg_password"]);
 $reg_password_confirm = md5($_POST["reg_password_confirm"]);
 $reg_fullname = $_POST["reg_fullname"];
 $reg_gender = $_POST["reg_gender"];
-
+echo $reg_password;
 
 if ($reg_password != $reg_password_confirm) {
   echo '<a href="register.php">Error: password does not match. Try again!</a>';
@@ -15,9 +15,11 @@ if ($reg_password != $reg_password_confirm) {
 
 include "db.php";
 
-$sql = "INSERT INTO student_users (reg_username, reg_email, reg_password, reg_fullname, reg_gender) 
-VALUES('$reg_username', '$reg_email', '$reg_password', '$reg_fullname', '$reg_gender')";
+$sql = "INSERT INTO student_users (reg_username, reg_fullname, reg_gender, reg_email, reg_password)
+        VALUES('$reg_username', '$reg_fullname','$reg_gender','$reg_email', '$reg_password' )";
+
 $result = $link->query($sql);
+
 
 if($result == false)
   echo '<a href="register.php">Error: cannot execute query</a>';

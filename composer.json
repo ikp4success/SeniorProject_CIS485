@@ -1,6 +1,7 @@
 {
     "require": {
         "components/font-awesome": "~4.4",
-        "twbs/bootstrap": "~3.3"
+        "twbs/bootstrap": "~3.3",
+        "vlucas/phpdotenv": "~2.0"
     }
 }

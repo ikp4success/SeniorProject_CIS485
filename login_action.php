@@ -5,11 +5,15 @@ include "db.php";
 
 $reg_username = $_POST["reg_username"];
 
-$reg_passw = $_POST["reg_password"];
-$sql = "SELECT reg_username, reg_password FROM student_users WHERE reg_username = '$reg_username' and reg_password = md5('$reg_passw')";
-$result =$link->query($sql);
+$reg_password = md5($_POST["reg_password"]);
 
-if($result == false) {
+
+$sql = "SELECT reg_username, reg_password FROM student_users
+        WHERE reg_username = '$reg_username' and reg_password ='$reg_password'";
+echo $sql;
+$result = $link->query($sql);
+
+if($result === false) {
     echo '<a href="login.php">Error: cannot execute query</a>';
     exit;
 }
