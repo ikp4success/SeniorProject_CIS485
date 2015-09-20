@@ -1,22 +1,8 @@
 <?php
-//very important line without it, .env will not work
 require_once 'vendor/autoload.php';
 
-//.env file will contain variables username/pass other sensitive info
-//if on server load .env.production else load your .env.local file
-if (file_exists('.env.production')){
-    $Dotenv = new Dotenv\Dotenv(__DIR__,'.env.production');
-}
-else{
-    $Dotenv = new Dotenv\Dotenv(__DIR__, '.env.local');
-}
-$Dotenv->load();
-
-
-//----------------------------------------------------------------------
-
-//connect to mysql
-$link = new mysqli(getenv('mysql_serverName'), getenv('mysql_usernameCIS'), getenv('mysql_passwordCIS'), getenv('dbtable_CIS') ) or
+//connect to mysql in OpenShift
+$link = new mysqli($_ENV["OPENSHIFT_MYSQL_DB_HOST"], $_ENV["OPENSHIFT_MYSQL_DB_USERNAME"], $_ENV["OPENSHIFT_MYSQL_DB_PASSWORD"], 'csucis485' ) or
         die("Failed to connect to mysql: " . mysqli_error($link));
 
 //if connection fails display error and exit
