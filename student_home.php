@@ -101,7 +101,7 @@
 						<div class="row">
 							<div>
 								<p>
-									<td>Student User Portal -- UNDER CONSTRUCTION</td>
+									<td>Student User Portal -- UNDER CONSTRUCTION---</td>
 
 								<!-- 	<?php
 									// session_start();
