@@ -128,13 +128,11 @@
 		$form.find('.login-form-main-message').addClass('show success').html(options['msg-success']);
 	}
 
-<<<<<<< HEAD
-=======
 	function form_failed($form) {
 		$form.find('[type=submit]').addClass('error').html(options['btn-error']);
 		$form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);
 	}
->>>>>>> dev
+
 });
 	// Dummy Submit Form (Remove this)
 	//----------------------------------------------
