@@ -12,17 +12,7 @@ $sql = "SELECT reg_username, reg_password FROM student_users
         WHERE reg_username = '$reg_username' and reg_password ='$reg_password'";
 echo $sql;
 $result = $link->query($sql);
-/*if (mysql_num_rows($result)==0) {
-    echo mysql_num_rows($sql);
-    exit;
-}
-if($result === false || mysql_num_rows($result) < 0)  {
-    echo '<a href="login.php">Error: cannot execute query</a>';
-    exit;
-}
-*/
-echo !$result;
-exit;
+
 $num_rows = mysqli_num_rows($result);
 if($num_rows == 1) {
     $_SESSION["login"] = "OK";
