@@ -62,7 +62,7 @@
 						<li>
 							
 							<a href="#"><div class="formatbar">
-								<img src="images/letter.png">  Grade</div></a>
+								<img src="images/letter.png">  Grades</div></a>
 							
 						</li>
 						<li class="sidebar-brand">
