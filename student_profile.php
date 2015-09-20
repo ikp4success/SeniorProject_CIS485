@@ -1,4 +1,4 @@
-<HTML>
+<html>
 	<title>Clicker App Student Users Page</title>
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link href='css/style.css' rel='stylesheet' type='text/css'>
@@ -180,5 +180,5 @@
 
 	</div>
 </body>
-</HTML>
+</html>
 
