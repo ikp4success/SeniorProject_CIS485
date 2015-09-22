@@ -29,7 +29,7 @@
 	<!-- Main Form -->
 	<?php print 'your ip is : '.$_SERVER['HTTP_X_CLIENT_IP'].'\n';
 	$ipchain = array( $_SERVER['HTTP_X_FORWARDED_FOR'] );
-	print 'your ip with proxy : '.$ipchain;?>
+	print 'your ip with proxy : '.var_dump($ipchain);?>
 
 	<div class="login-form-1">
 		<form method="post" action="login_action.php" class="text-left">
