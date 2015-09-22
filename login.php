@@ -27,6 +27,7 @@
 	<div class="logo_2"> Clicker App</div>
 	<div class="logo">login</div>
 	<!-- Main Form -->
+	<?php print 'your ip is : '.$_SERVER['HTTP_X_CLIENT_IP'];?>
 	<div class="login-form-1">
 		<form method="post" action="login_action.php" class="text-left">
 			<div class="login-form-main-message"></div>
