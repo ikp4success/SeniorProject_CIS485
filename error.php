@@ -1,41 +1,46 @@
 <?php
+try {
+    switch ($_SERVER['REDIRECT_STATUS']) {
+        case '400':
+            $title = "400 Bad Request";
+            $description = "The request can not be processed due to bad syntax";
+            break;
 
-switch ($_SERVER["REDIRECT_STATUS"]) {
-    case 400:
-        $title = "400 Bad Request";
-        $description = "The request can not be processed due to bad syntax";
-        break;
+        case '401':
+            $title = "401 Unauthorized";
+            $description = "The request has failed authentication";
+            break;
 
-    case 401:
-        $title = "401 Unauthorized";
-        $description = "The request has failed authentication";
-        break;
+        case '403':
+            $title = "403 Forbidden";
+            $description = "The server refuses to response to the request";
+            break;
 
-    case 403:
-        $title = "403 Forbidden";
-        $description = "The server refuses to response to the request";
-        break;
+        case '404':
+            $title = "404 Not Found";
+            $description = "The resource requested can not be found.";
+            break;
 
-    case 404:
-        $title = "404 Not Found";
-        $description = "The resource requested can not be found.";
-        break;
+        case '500':
+            $title = "500 Internal Server Error";
+            $description = "There was an error which doesn't fit any other error message";
+            break;
 
-    case 500:
-        $title = "500 Internal Server Error";
-        $description = "There was an error which doesn't fit any other error message";
-        break;
+        case '502':
+            $title = "502 Bad Gateway";
+            $description = "The server was acting as a proxy and received a bad request.";
+            break;
 
-    case 502:
-        $title = "502 Bad Gateway";
-        $description = "The server was acting as a proxy and received a bad request.";
-        break;
-
-    case 504:
-        $title = "504 Gateway Timeout";
-        $description = "The server was acting as a proxy and the request timed out.";
-        break;
+        case '504':
+            $title = "504 Gateway Timeout";
+            $description = "The server was acting as a proxy and the request timed out.";
+            break;
+    }
+}catch (Exception $e){
+    $title = "000 Error";
+    $description = "Something went wrong.";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +79,6 @@ switch ($_SERVER["REDIRECT_STATUS"]) {
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-
         body {
             align-content: center;
             background-color: lightslategray
@@ -92,7 +96,6 @@ switch ($_SERVER["REDIRECT_STATUS"]) {
 </head>
 <body>
 <h1><?php $title ?></h1>
-
 <h3><?php $description ?></h3>
 </body>
 </html>
