@@ -28,6 +28,8 @@
 	<div class="logo">login</div>
 	<!-- Main Form -->
 	<?php print 'your ip is : '.$_SERVER['HTTP_X_CLIENT_IP'];?>
+	<?php print 'your ip with proxy : '.$_SERVER['HTTP_X_FORWARDED_FOR'];?>
+
 	<div class="login-form-1">
 		<form method="post" action="login_action.php" class="text-left">
 			<div class="login-form-main-message"></div>
