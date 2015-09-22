@@ -27,8 +27,9 @@
 	<div class="logo_2"> Clicker App</div>
 	<div class="logo">login</div>
 	<!-- Main Form -->
-	<?php print 'your ip is : '.$_SERVER['HTTP_X_CLIENT_IP'];?>
-	<?php print 'your ip with proxy : '.$_SERVER['HTTP_X_FORWARDED_FOR'];?>
+	<?php print 'your ip is : '.$_SERVER['HTTP_X_CLIENT_IP'].'\n';
+	$ipchain = array( $_SERVER['HTTP_X_FORWARDED_FOR'] );
+	print 'your ip with proxy : '.$ipchain;?>
 
 	<div class="login-form-1">
 		<form method="post" action="login_action.php" class="text-left">
