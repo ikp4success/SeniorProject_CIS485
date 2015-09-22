@@ -40,7 +40,7 @@ try {
     $title = "000 Error";
     $description = "Something went wrong.";
 }
-
+echo $title;
 ?>
 <!DOCTYPE html>
 <html lang="en">
