@@ -8,18 +8,18 @@ RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
 
 # Remove php file extension
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.*) $1.php [L]
+RewriteCond %{REQUEST_FILENAME}\.php !-f
+RewriteRule ^(.*) $1.php [L]
 #------------------------------------
 
 # Redrirect errors to custom error page
-ErrorDocument 400 /error
-ErrorDocument 401 /error
-ErrorDocument 403 /error
-ErrorDocument 404 /error
-ErrorDocument 500 /error
-ErrorDocument 502 /error
-ErrorDocument 504 /error
+ErrorDocument 400 /error.php
+ErrorDocument 401 /error.php
+ErrorDocument 403 /error.php
+ErrorDocument 404 /error.php
+ErrorDocument 500 /error.php
+ErrorDocument 502 /error.php
+ErrorDocument 504 /error.php
 #-----------------------------------
 
 #RewriteCond %{REQUEST_FILENAME} !-f
