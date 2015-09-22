@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 <html>
 	<title>Clicker App Student Users Page</title>
+=======
+<html lang="en">
+<head>
+	<title>Clicker App Student Profile</title>
+>>>>>>> deploy
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link href='css/style.css' rel='stylesheet' type='text/css'>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->
@@ -8,81 +14,74 @@
 	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- gen.js needs to make sure jquery is loaded to work-->
 	<script src="js/gen.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
 	<link href="css/profilestyle.css" rel="stylesheet" media="all" />
-	<body style="background-color:#D8D8D8;">
+</head>
+
+<body style="background-color:#D8D8D8;">
 		<div id="container">
 			<div id="wrapper">
 
 				<!-- Sidebar -->
 				<div id="sidebar-wrapper">
 					<ul class="sidebar-nav">
-						<li style="background-color:#045FB4;"><a style="color:#FFFFFF;" href="student_profile.php"> 	<div class="formatbar">
+						<li style="background-color:#045FB4;">
+							<a style="color:#FFFFFF;" href="student_profile.php"> 	<div class="formatbar">
 								<img src="images/student-32.png">
-							 Welcome, <?php 
+							 Welcome, <?php
 						session_start();
 
 						if (isset($_SESSION['reg_username'])) {
 							echo  $_SESSION['reg_username'];
-						} 
+						}
 						?>
-							</div></a></li>
-					</li>
+							</div></a>
+						</li>
 						<li>
-							
-							
-							<a href="student_home.php">
+							<a href="student_home.php" title="student home">
 								<div class="formatbar">
-								<img src="images/home.png">
-								 Student Home
-								</div>
+								<img src="images/home.png">  Student Home </div>
 							</a>
-							
+
 						</li>
 						<li>
-							
+
 							<a href="#">
-								<div class="formatbar">
-								<img src="images/question.png">
-								 Questions
-								</div>
+								<div class="formatbar" title="questions">
+								<img src="images/question.png">  Questions</div>
 							</a>
-							
+
 						</li>
 						<li>
-							
+
 							<a href="#">
-								<div class="formatbar">
-								<img src="images/book.png">
-								  Answers</div></a>
-							
+								<div class="formatbar" title="answers">
+								<img src="images/book.png">  Answers </div></a>
+
 						</li>
 						<li>
-							
-							<a href="#"><div class="formatbar">
-								<img src="images/letter.png">  Grade</div></a>
-							
+
+							<a href="#" title="grades"><div class="formatbar">
+								<img src="images/letter.png">  Grades </div></a>
+
 						</li>
 						<li>
-							
-							<a href="about.php"><div class="formatbar">
+
+							<a href="about.php" title="about us"><div class="formatbar">
 								<img src="images/about.png">  About	</div></a>
-						
+
 						</li>
-						
+
 							<li>
-								
-								<a href="exit.php" title="Login private area">
+
+								<a href="exit.php" title="Logout">
 									<div class="formatbar">
-								<img src="images/exit.png">
-									  LogOff
-										</div>
-								</a>
-							
+								<img src="images/exit.png">  LogOff </div></a>
+
 							</li>
 
-						
+
 
 					</ul>
 					<div class="sidebar-nav-bottom">
@@ -115,7 +114,8 @@
 									include "db.php";
 									$reg_user = $_SESSION['reg_username'];
 
-									$sql  = "SELECT reg_username, reg_gender,reg_fullname,reg_email FROM student_users WHERE reg_username = '$reg_user'";
+									$sql  = "SELECT reg_username, reg_gender,reg_fullname,reg_email
+											  FROM student_users WHERE reg_username = '$reg_user'";
 
 									$result = $link->query($sql);
 

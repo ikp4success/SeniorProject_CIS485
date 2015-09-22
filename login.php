@@ -1,12 +1,12 @@
-
-
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
 <!-- All the files that are required -->
+<<<<<<< HEAD
 <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+=======
+ <link rel="stylesheet" href="vendor/components/font-awesome/css/font-awesome.min.css">
+>>>>>>> deploy
 <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 <link href='css/style.css' rel='stylesheet' type='text/css'>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->
@@ -15,12 +15,11 @@
 <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- gen.js needs to make sure jquery is loaded to work-->
 <script src="js/gen.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title>Clicker App home Page</title>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Clicker App login</title>
 </head>
+
 <body>
-
-
 
 <!-- Where all the magic happens -->
 <!-- LOGIN FORM -->
@@ -32,6 +31,8 @@
 	<div class="logo_2"> Clicker App</div>
 	<div class="logo">login</div>
 	<!-- Main Form -->
+	<?php print 'your ip is : '.$_SERVER['HTTP_X_CLIENT_IP'].'\n';?>
+
 	<div class="login-form-1">
 		<form method="post" action="login_action.php" class="text-left">
 			<div class="login-form-main-message"></div>

@@ -13,11 +13,6 @@ $sql = "SELECT reg_username, reg_password FROM student_users
 echo $sql;
 $result = $link->query($sql);
 
-if($result === false) {
-    echo '<a href="login.php">Error: cannot execute query</a>';
-    exit;
-}
-
 $num_rows = mysqli_num_rows($result);
 if($num_rows == 1) {
     $_SESSION["login"] = "OK";

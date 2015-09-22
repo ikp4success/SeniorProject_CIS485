@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <html>
+=======
+<html lang="en">
+>>>>>>> deploy
 <head>
 	<title>Clicker App About Page</title>
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
@@ -9,11 +13,16 @@
 	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- gen.js needs to make sure jquery is loaded to work-->
 	<script src="js/gen.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
 	<link href="css/profilestyle.css" rel="stylesheet" media="all" />
 </head>
+<<<<<<< HEAD
 <body style="background-color:#D8D8D8;">
+=======
+
+	<body style="background-color:#D8D8D8;">
+>>>>>>> deploy
 		<div id="container">
 			<div id="wrapper">
 
@@ -22,69 +31,69 @@
 					<ul class="sidebar-nav">
 						<li style="background-color:#045FB4;"><a style="color:#FFFFFF;" href="student_profile.php"> 	<div class="formatbar">
 								<img src="images/student-32.png">
-							 Welcome, <?php 
+							 Welcome, <?php
 						session_start();
 
 						if (isset($_SESSION['reg_username'])) {
 							echo  $_SESSION['reg_username'];
-						} 
+						}
 						?>
 							</div></a></li>
 					</li>
 						<li>
-							
-							
+
+
 							<a href="student_home.php">
 								<div class="formatbar">
 								<img src="images/home.png">
 								 Student Home
 								</div>
 							</a>
-							
+
 						</li>
 						<li>
-							
+
 							<a href="#">
 								<div class="formatbar">
 								<img src="images/question.png">
 								 Questions
 								</div>
 							</a>
-							
+
 						</li>
 						<li>
-							
+
 							<a href="#">
 								<div class="formatbar">
 								<img src="images/book.png">
 								  Answers</div></a>
-							
+
 						</li>
 						<li>
-							
+
 							<a href="#"><div class="formatbar">
-								<img src="images/letter.png">  Grade</div></a>
-							
+								<img src="images/letter.png">  Grades</div></a>
+
 						</li>
 						<li class="sidebar-brand">
-							
+
 							<a href="about.php"><div class="formatbar">
 								<img src="images/about.png">  About	</div></a>
-						
+
 						</li>
-						
+
 							<li>
-								
+
 								<a href="exit.php" title="Login private area">
 									<div class="formatbar">
 								<img src="images/exit.png">
 									  LogOff
 										</div>
 								</a>
-							
+
 							</li>
 
-						
+
 
 					</ul>
 					<div class="sidebar-nav-bottom">
