@@ -12,7 +12,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule (.*) $1.php [L]
 #------------------------------------
 
-# Redrirect errors to custom error page
+# Redrirect errors to custom error page Currently broken on OpenShift
 ErrorDocument 400 /error.php
 ErrorDocument 401 /error.php
 ErrorDocument 403 /error.php
