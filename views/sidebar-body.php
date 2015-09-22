@@ -1,4 +1,3 @@
-<body style="background-color:#D8D8D8;">
 <div id="container">
     <div id="wrapper">
 
@@ -82,8 +81,15 @@
 
             </ul>
             <div class="sidebar-nav-bottom">
-                <p class="sidebar-copyright">&copy; 2015 Senior Project CIS485 Clicker App. <a
+                <p class="sidebar-copyright"> &copy; 2015 Senior Project CIS485 Clicker App. <a
                         href="mailto:CIS485@csuohio.com">Contact</a></p>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
