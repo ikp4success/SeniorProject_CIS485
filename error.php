@@ -1,6 +1,6 @@
 <?php
 
-switch($_SERVER["REDIRECT_STATUS"]){
+switch ($_SERVER["REDIRECT_STATUS"]) {
     case 400:
         $title = "400 Bad Request";
         $description = "The request can not be processed due to bad syntax";
@@ -45,9 +45,9 @@ switch($_SERVER["REDIRECT_STATUS"]){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<?php $title?>">
+    <meta name="description" content="<?php $title ?>">
 
-    <title><?php $title?></title>
+    <title><?php $title ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +58,8 @@ switch($_SERVER["REDIRECT_STATUS"]){
     <!-- Custom Fonts -->
     <link href="vendor/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css">
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -74,13 +75,24 @@ switch($_SERVER["REDIRECT_STATUS"]){
     <![endif]-->
     <style>
 
-        body {align-content: center;background-color:lightslategray}
-        h1   {font-family: Lora; color:white}
-        h3    {color:azure}
+        body {
+            align-content: center;
+            background-color: lightslategray
+        }
+
+        h1 {
+            font-family: Lora;
+            color: white
+        }
+
+        h3 {
+            color: azure
+        }
     </style>
 </head>
 <body>
-        <h1><?php $title?></h1>
-        <h3><?php $description?></h3>
+<h1><?php $title ?></h1>
+
+<h3><?php $description ?></h3>
 </body>
 </html>
