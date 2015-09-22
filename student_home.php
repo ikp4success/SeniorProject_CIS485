@@ -25,7 +25,13 @@
 					<a style="color:#FFFFFF;" href="student_profile.php">
 						<div class="formatbar">
 							<img src="images/student-32.png">
-							Welcome, 							</div>
+							Welcome, 	<?php
+							session_start();
+
+							if (isset($_SESSION['reg_username'])) {
+								echo  $_SESSION['reg_username'];
+							}
+							?>	</div>
 
 					</a>
 
