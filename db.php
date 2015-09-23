@@ -2,9 +2,9 @@
 require_once 'vendor/autoload.php';
 
 
-if (var_dump(isset ($_SERVER['OPENSHIFT_NAMESPACE']))) {
+if (isset ($_SERVER['OPENSHIFT_NAMESPACE'])) {
     //connect to mysql in OpenShift
-    $link = new mysqli($_ENV["OPENSHIFT_MYSQL_DB_HOST"], $_ENV["OPENSHIFT_MYSQL_DB_USERNAME"], $_ENV["OPENSHIFT_MYSQL_DB_PASSWORD"], 'csu') or
+    $link = new mysqli($_ENV["OPENSHIFT_MYSQL_DB_HOST"], $_ENV["OPENSHIFT_MYSQL_DB_USERNAME"], $_ENV["OPENSHIFT_MYSQL_DB_PASSWORD"], 'csucis485') or
     die("Failed to connect to mysql: " . mysqli_error($link));
 
 } else {
