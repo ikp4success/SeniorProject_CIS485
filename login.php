@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
 <!-- All the files that are required -->
-<<<<<<< HEAD
+
 <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
-=======
- <link rel="stylesheet" href="vendor/components/font-awesome/css/font-awesome.min.css">
->>>>>>> deploy
+<link rel="stylesheet" href="vendor/components/font-awesome/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 <link href='css/style.css' rel='stylesheet' type='text/css'>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->

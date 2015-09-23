@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-<html>
-	<title>Clicker App Student Users Page</title>
-=======
 <html lang="en">
 <head>
 	<title>Clicker App Student Profile</title>
->>>>>>> deploy
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link href='css/style.css' rel='stylesheet' type='text/css'>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->

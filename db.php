@@ -22,7 +22,6 @@ if ($_SERVER['OPENSHIFT_NAMESPACE']) {
     $link = new mysqli(getenv('MYSQL_DB_HOST'), getenv('MYSQL_DB_USERNAME'), getenv('MYSQL_DB_PASSWORD_CIS'), getenv('DBTABLE_CIS')) or
     die("Failed to connect to mysql: " . mysqli_error($link));
 
-
 }
 
 //if connection fails display error and exit
