@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<html>
-=======
 <html lang="en">
->>>>>>> deploy
 <head>
 	<title>Clicker App About Page</title>
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
@@ -17,12 +13,8 @@
 	<link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
 	<link href="css/profilestyle.css" rel="stylesheet" media="all" />
 </head>
-<<<<<<< HEAD
-<body style="background-color:#D8D8D8;">
-=======
 
 	<body style="background-color:#D8D8D8;">
->>>>>>> deploy
 		<div id="container">
 			<div id="wrapper">
 
