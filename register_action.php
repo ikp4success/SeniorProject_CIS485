@@ -15,6 +15,7 @@ if ($reg_password != $reg_password_confirm) {
 
 include "db.php";
 
+$link=connectDb('cis485');
 $sql = "INSERT INTO student_users (reg_username, reg_fullname, reg_gender, reg_email, reg_password)
         VALUES('$reg_username', '$reg_fullname','$reg_gender','$reg_email', '$reg_password' )";
 
