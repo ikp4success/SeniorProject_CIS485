@@ -21,10 +21,11 @@ CREATE TABLE message(
 
 CREATE TABLE student_users (
     userID int(9) NOT NULL auto_increment,
-    reg_username VARCHAR(50) NOT NULL, 
+    reg_username VARCHAR(50) NOT NULL UNIQUE, 
     reg_gender CHAR(1) NOT NULL, 
     reg_fullname CHAR(100) NULL,
-    reg_email VARCHAR(40) NOT NULL, 
-    reg_password VARCHAR(40) NOT NULL, 
+    reg_email VARCHAR(40) NOT NULL UNIQUE, 
+    reg_password VARCHAR(40) NOT NULL,
+    TimeStamp timestamp NOT NULL
     PRIMARY KEY(userID) 
 );
