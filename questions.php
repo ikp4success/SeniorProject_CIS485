@@ -1,10 +1,10 @@
 <html lang="en">
 <head>
     <title>Clicker App Questions</title>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'/>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->
-    <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" src="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -138,7 +138,7 @@
 												if(isset($_SESSION['set_no'])) {
 													echo  $_SESSION['set_no'];
 												}
-											?>" required></h1>
+											?>" required></h3>
 								<input type="submit" value="Update Question Number">
 											<br><br>
 							</form>
