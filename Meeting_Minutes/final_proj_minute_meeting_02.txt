@@ -1,4 +1,0 @@
-Progress – September 11, 2015
-Team: Immanuel, Dan, David, George
-	This week, we hashed out more details about how we want to approach the user interface, and some members did a little research on php, Javascript, and JQuery.  David and Immanuel worked on setting up the initial database, while we all tried to figure out a good way to organize/connect the different tables.  Immanuel was able to get the registration/login page working, with assistance from David and Dan as far as connecting to the database and testing.  The test for registering a new user was successful.
-	Moving forward, we plan to further flesh out the layout, design and architecture of the main app, while integrating more tables and getting some script done.  Also, a bit more research will be commenced for those who are newer to Javascript and JQuery

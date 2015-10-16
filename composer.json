@@ -2,6 +2,8 @@
     "require": {
         "components/font-awesome": "~4.4",
         "twbs/bootstrap": "~3.3",
-        "vlucas/phpdotenv": "~2.0"
+        "vlucas/phpdotenv": "~2.0",
+        "cboden/Ratchet": "0.3.*",
+        "guzzle/guzzle": "~3.9"
     }
 }

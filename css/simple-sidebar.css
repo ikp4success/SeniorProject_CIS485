@@ -106,7 +106,7 @@
 
 .sidebar-nav-bottom{
     position: absolute; 
-    bottom: 45;
+    bottom: 45px;
 }
 
 @media(min-width:768px) {

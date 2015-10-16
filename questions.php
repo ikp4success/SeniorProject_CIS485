@@ -1,10 +1,10 @@
 <html lang="en">
 <head>
     <title>Clicker App Questions</title>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'/>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->
-    <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" src="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -17,28 +17,21 @@
             $('.multi-choice-form .add-multi-choice').click(function(){
                 //alphabetically
                 // var a = String.fromCharCode(64+$('.multi-choice-container').length + 1);
-
                 var n = $('.multi-choice-container').length + 1;
-
                 //set max multi choices
                 if( 4 < n ) {return false;}
-
                 // var edited_html = $('<p class="text-box"><label for="box' + n + '">Box <span class="box-number">' + n + '</span></label> <textarea type="text" name="boxes[]" value="" id="box' + n + '" /></textarea> <a href="#" class="remove-box">Remove</a></p>');
-
                 var edited_html =
                     $('<div class="multi-choice-container">' +
                         '<label for="multi-choice' + n + '"><span class="multi-choice-index">' + n + '</span></label>' +
                         '<textarea placeholder="Multi choice answer" style="width: 100%; height: 5%;" name="multi-choices'+n+'" id="multi-choice' + n + '" /></textarea> ' +
                         '<a href="#" class="remove-multi-choice btn btn-sm btn-danger"">Remove</a></div>');
-
                 edited_html.hide();
                 $('.multi-choice-form div.multi-choice-container:last').after(edited_html);
                 edited_html.fadeIn('slow');
                 return false;
             });
             /////////end of multi-choice answer
-
-
             //Remove multi-choice answer
             $('.multi-choice-form').on('click', '.remove-multi-choice', function(){
                 $(this).parent().fadeOut("slow", function() {
@@ -62,11 +55,10 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li style="background-color:#045FB4;"><a style="color:#FFFFFF;" href="student_profile.php"> 	<div class="formatbar">
-                            <img src="images/student-32.png">
+                <li style="background-color:#045FB4;"><a style="color:#FFFFFF;" href="admin_profile.php"> 	<div class="formatbar">
+                            <img src="images/professor-32.png">
                             Welcome, <?php
                             session_start();
-
                             if (isset($_SESSION['reg_username'])) {
                                 echo  $_SESSION['reg_username'];
                             }
@@ -76,10 +68,10 @@
                 <li>
 
 
-                    <a href="student_home.php">
+                    <a href="admin_home.php">
                         <div class="formatbar">
                             <img src="images/home.png">
-                            Student Home
+                            Admin Home
                         </div>
                     </a>
 
@@ -89,29 +81,23 @@
                     <a href="questions.php">
                         <div class="formatbar">
                             <img src="images/question.png">
-                            Questions
+                            Create Question Set
                         </div>
                     </a>
 
                 </li>
                 <li>
 
-                    <a href="#">
+                    <a href="edit_qa.php">
                         <div class="formatbar">
                             <img src="images/book.png">
-                            Answers</div></a>
+                            View/Edit QA Sets</div></a>
 
                 </li>
                 <li>
 
                     <a href="#"><div class="formatbar">
                             <img src="images/letter.png">  Grades</div></a>
-
-                </li>
-                <li>
-
-                    <a href="about.php"><div class="formatbar">
-                            <img src="images/about.png">  About	</div></a>
 
                 </li>
 
@@ -147,14 +133,34 @@
                             <p>Class Name/number: <?php $class?> </p>
                             <p>Total connected students: <?php $total_students?> </p>
                             <p>Gender ratio (M/F): <?php $gender_ratio?></p>
-                            <form role="form" method="post">
-                                Correct answer: <input type="text" name="correct" placeholder="1"><br>
+							<form method="post" action="update_q_no.php">
+								<h3>Set Number: <input type="text" name="set_no" size="5" value="<?php 
+												if(isset($_SESSION['set_no'])) {
+													echo  $_SESSION['set_no'];
+												}
+											?>" required></h3>
+								<input type="submit" value="Update Question Number">
+											<br><br>
+							</form>
+                            <form role="form" method="post" action="post_question.php">
+								<h3>Question number: <?php
+													if(isset($_SESSION["q_no"])) {
+														echo  $_SESSION["q_no"];
+													}
+													else {
+														$q_no = 1;
+														$_SESSION["q_no"] = $q_no;
+														echo $_SESSION["q_no"];
+													}
+														
+												?></h3><br><br>
+                                Correct answer: <input type="text" name="correct" placeholder="1" required><br><br>
 
                             <div class="multi-choice-form">
-                                    <textarea name="question" placeholder="Question?" style="width: 100%; height: 5%;"></textarea>
+                                    <textarea name="question" placeholder="Question?" style="width: 100%; height: 5%;" required></textarea> <!--question-->
                                     <div class="multi-choice-container">
                                         <label for="multi-choice1"><span class="multi-choice-index">1</span></label>
-                                        <textarea placeholder="Multi choice answer" style="width: 100%; height: 5%;" name="multi-choices" id="multi-choice1" /></textarea>
+                                        <textarea placeholder="Multi choice answer" style="width: 100%; height: 5%;" name="multi-choices" id="multi-choice1" required/></textarea><!--answer1-->
                                         <a class="add-multi-choice btn btn-sm btn-success" href="#">Add</a>
                                     </div>
                                     <p><input class="btn btn-primary" type="submit"  value="Save" /><input class="btn btn-success" type="submit" value="Send" /></p>
@@ -184,4 +190,3 @@
     </div>
 </body>
 </html>
-

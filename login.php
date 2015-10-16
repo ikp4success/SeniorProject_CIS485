@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- All the files that are required -->
+<html>
 
+<head>
+
+<!-- All the files that are required -->
 <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
-<link rel="stylesheet" href="vendor/components/font-awesome/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 <link href='css/style.css' rel='stylesheet' type='text/css'>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->
-<link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- gen.js needs to make sure jquery is loaded to work-->
 <script src="js/gen.js"></script>
-<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title>Clicker App login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Clicker App home Page</title>
 </head>
-
 <body>
+
+
 
 <!-- Where all the magic happens -->
 <!-- LOGIN FORM -->
@@ -29,8 +30,6 @@
 	<div class="logo_2"> Clicker App</div>
 	<div class="logo">login</div>
 	<!-- Main Form -->
-	<?php print 'your ip is : '.$_SERVER['HTTP_X_CLIENT_IP'].'\n';?>
-
 	<div class="login-form-1">
 		<form method="post" action="login_action.php" class="text-left">
 			<div class="login-form-main-message"></div>
@@ -38,11 +37,11 @@
 				<div class="login-group">
 					<div class="form-group">
 						<label for="reg_username" class="sr-only">Username</label>
-						<input pattern=".{3,50}" required title="3 to 50 characters for username" type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
+						<input pattern=".{3,20}" required title="3 to 20 characters for username" type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
 					</div>
 					<div class="form-group">
 						<label for="reg_password" class="sr-only">Password</label>
-						<input pattern=".{6,40}" required title="6 to 40 characters for password" type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
+						<input pattern=".{6,20}" required title="6 to 20 characters for password" type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
 					</div>
 					<div class="form-group login-group-checkbox">
 						<input type="checkbox" id="lg_remember" name="lg_remember">
@@ -70,12 +69,16 @@
 			<div class="main-login-form">
 				<div class="login-group">
 					<div class="form-group">
+						<label for="school_id" class="sr-only">School ID</label>
+						<input pattern=".{7}" required title="7 characters for username" type="text" class="form-control" id="school_id" name="school_id" placeholder="7-digit school id">
+					</div>
+					<div class="form-group">
 						<label for="reg_username" class="sr-only">Username</label>
-						<input pattern=".{3,50}" required title="3 to 50 characters for username" type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
+						<input pattern=".{3,20}" required title="3 to 20 characters for username" type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
 					</div>
 					<div class="form-group">
 						<label for="reg_password" class="sr-only">Password</label>
-						<input pattern=".{6,40}" required title="6 to 40 characters for password" type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
+						<input pattern=".{6,20}" required title="6 to 20 characters for password" type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
 					</div>
 					<div class="form-group">
 						<label for="reg_password_confirm" class="sr-only">Password Confirm</label>
@@ -87,8 +90,12 @@
 						<input required type="email" class="form-control" id="reg_email" name="reg_email" placeholder="email">
 					</div>
 					<div class="form-group">
-						<label for="reg_fullname" class="sr-only">Full Name</label>
-						<input pattern=".{3,100}" required title="3 to 100 characters for name" type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name">
+						<label for="reg_fname" class="sr-only">First Name</label>
+						<input pattern=".{3,20}" required title="3 to 20 characters for name" type="text" class="form-control" id="reg_fname" name="reg_fname" placeholder="first name">
+					</div>
+					<div class="form-group">
+						<label for="reg_lname" class="sr-only">Last Name</label>
+						<input pattern=".{3,20}" required title="3 to 20 characters for name" type="text" class="form-control" id="reg_lname" name="reg_lname" placeholder="last name">
 					</div>
 					
 					<div class="form-group login-group-checkbox">
