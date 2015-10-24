@@ -10,7 +10,7 @@
 	$result =$link->query($sql);
 
 	if($result == false) {
-	  echo '<a href="login.php">Error: cannot execute query</a>';
+	  echo mysqli_error($link);
 	  exit;
 	}
 
@@ -22,22 +22,19 @@
 	  $row = $result->fetch_assoc();
 	  	  
 	  if($row["admin_yn"] == 'Y') {		  
-		$redirect = "admin_home.php";  
-	    $_SESSION["teacher_id"] = $row["id"];
+                $redirect = "admin_home.php";  
+                $_SESSION["teacher_id"] = $row["id"];
 	  }
 	  else
 		$redirect = "student_home.php";
-
+          
+          header("Location: $redirect");
 	}
 	else
-	 echo '<a href="login.php">Username or Password does not Exist ---click to go back to login</a>';
+            echo '<a href="login.php">Username or Password does not Exist ---click to go back to login</a>';
 	 
 	 //$redirect = "login.php";
 
 	// mysql_free_result($result);
 	// mysql_close($link);
-
-	header("Location: $redirect");
-
-
 ?>
