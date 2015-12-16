@@ -11,7 +11,7 @@
 	<link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
 	<link href="css/profilestyle.css" rel="stylesheet" media="all" />
 	<link href="css/question_answer.css" rel="stylesheet" media="all" />
-	<body style="background-color:#D8D8D8;">
+<body style="background-color:#FFFFFF;  box-shadow: 5px 8px 7px 2px #A2A2A2;">
 		<div id="container">
 			<div id="wrapper">
 
@@ -51,18 +51,8 @@
 							
 						</li>
 						<li>
-							
-							<a href="#">
-								<div class="formatbar">
-								<img src="images/book.png">
-								  Answers</div></a>
-							
-						</li>
-						<li>
-							
-							<a href="#"><div class="formatbar">
-								<img src="images/letter.png">  Grade</div></a>
-							
+							<a href="student_grade.php"><div class="formatbar">
+									<img src="images/letter.png">  Grade</div></a>
 						</li>
 						<li>
 							
@@ -125,9 +115,9 @@
 
 
 									if($row=mysqli_fetch_array($result)){
-										echo '<tr><td>Username:'.$row["reg_username"].'</td></tr>';
+										echo '<tr><td>Username:		'.$row["reg_username"].'</td></tr>';
 										echo "\n";
-										echo '<tr><td> ID: '.$row["id"].'</td></tr>';
+										echo '<tr><td> ID:		'.$row["id"].'</td></tr>';
 										echo "\n";
 										echo '<tr><td> First Name:</td>
 										<td><input type="text" name="f_name" size="20" value="'.$row["f_name"].'"></td></tr>';

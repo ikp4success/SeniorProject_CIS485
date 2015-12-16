@@ -1,54 +1,78 @@
-<html lang="en">
+<!DOCTYPE html>
 <head>
     <title>Clicker App Questions</title>
-    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'/>
-    <link href='css/style.css' rel='stylesheet' type='text/css'>
+    <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel='stylesheet' type='text/css'/>
+    <link href='css/style.css' rel='stylesheet' type='text/css'/>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->
-    <link rel="stylesheet" src="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/AddQuestions.js"></script>
 
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
+<script>
+    $(document).ready(function(){
+        // helper function: log message to screen
+        function log(msg) {
+            console.log(msg + '\n');
+        }
+        var host = "ws://159.203.85.220:8080/";
+        ws = new WebSocket(host);
 
-    <script type="text/javascript">
-        jQuery(document).ready(function($){
-            //Add multi-choice answer
-            $('.multi-choice-form .add-multi-choice').click(function(){
-                //alphabetically
-                // var a = String.fromCharCode(64+$('.multi-choice-container').length + 1);
-                var n = $('.multi-choice-container').length + 1;
-                //set max multi choices
-                if( 4 < n ) {return false;}
-                // var edited_html = $('<p class="text-box"><label for="box' + n + '">Box <span class="box-number">' + n + '</span></label> <textarea type="text" name="boxes[]" value="" id="box' + n + '" /></textarea> <a href="#" class="remove-box">Remove</a></p>');
-                var edited_html =
-                    $('<div class="multi-choice-container">' +
-                        '<label for="multi-choice' + n + '"><span class="multi-choice-index">' + n + '</span></label>' +
-                        '<textarea placeholder="Multi choice answer" style="width: 100%; height: 5%;" name="multi-choices'+n+'" id="multi-choice' + n + '" /></textarea> ' +
-                        '<a href="#" class="remove-multi-choice btn btn-sm btn-danger"">Remove</a></div>');
-                edited_html.hide();
-                $('.multi-choice-form div.multi-choice-container:last').after(edited_html);
-                edited_html.fadeIn('slow');
-                return false;
+        ws.onopen = function (evt) {
+        log('connected to WebSocket :)');
+        };
+
+        ws.onclose = function (evt) {
+        log('closed WebSocket :(');
+        }; //on close event
+
+        ws.onmessage = function (evt) {
+            log('msg: '+evt.data);
+        };
+
+        ws.onerror = function (evt) {
+            log('error on WebSocket :(!');
+        };
+        //on click of send button
+        $("input[name='send']").click(function(){
+            <?php 	session_start(); echo 'var prof_ID ="'.$_SESSION["teacher_id"].'";';?>
+            mesobj={
+                prof: prof_ID,
+                set: document.getElementById("set_no").innerHTML,
+                question: document.getElementById("question_no").innerHTML,
+                timeOut: document.getElementById("set_time_out").value,
+                live_mode: document.getElementsByName("live_mode")[0].value
+            };
+            var mymessage = JSON.stringify(mesobj);
+            ws.send(mymessage);
+        });
+
+});
+</script>
+    <script>
+        $(document).ready(function() {
+            $('input[type=radio]').on('change', function () {
+                if (!this.checked) return
+                $('#collapseID').not($('div.' + $(this).attr('class'))).slideUp();
+                $('#collapseID.' + $(this).attr('class')).slideDown();
+
             });
-            /////////end of multi-choice answer
-            //Remove multi-choice answer
-            $('.multi-choice-form').on('click', '.remove-multi-choice', function(){
-                $(this).parent().fadeOut("slow", function() {
-                    $(this).remove();
-                    $('.multi-choice-index').each(function(index){
-                        $(this).text( index + 1 );
-                    });
-                });
-                return false;
+        ///BOOTSTRAP BUG checked does not work!! need this to bypass ahhh...
+        $('#option_live').on('change', function(){
+            document.getElementsByName("live_mode")[0].value= 1;
+        });
+            $('#option_quiz').on('change', function(){
+                document.getElementsByName("live_mode")[0].value= 0;
             });
+
         });
     </script>
 
-
 </head>
 
-<body style="background-color:#D8D8D8;">
+<body style="background-color:#FFFFFF;  box-shadow: 5px 8px 7px 2px #A2A2A2;">
 <div id="container">
     <div id="wrapper">
 
@@ -96,7 +120,7 @@
                 </li>
                 <li>
 
-                    <a href="#"><div class="formatbar">
+                    <a href="admin_grade.php"><div class="formatbar">
                             <img src="images/letter.png">  Grades</div></a>
 
                 </li>
@@ -123,54 +147,75 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
+            				<form method="post" action="update_q_no.php">
+                                <div>
+                                    <label for="setNumber">Set Number:</label>
+                                     <input id="setNumber" class="form-control " style="width:auto;"  type="number" min="1" max="1000" name="set_no" size="5" value="<?php
+												echo ((isset($_SESSION['set_no'])) ? $_SESSION['set_no']: $_SESSION['set_no']="1");?>" required>
+
+								<input class="btn btn-info " type="submit" value="Update Set">
+                                </div>
+							</form>
+
+                           		<h3>Set: <?php
+                                    include_once "update_q_no.php";
+
+                                    //update_q($link);
+                                    echo'<label id="set_no">'.$_SESSION['set_no'].'</label> Question: <label id="question_no">'.$_SESSION["q_no"].'</label>';?>
+                                </h3>
+
+                <form role="form" method="post" action="post_question.php">
+                    <div>
+                        <input type="hidden" name="set_no" value="<?php echo $_SESSION['set_no'];?>"  />
+                    <label for="correct-label">Correct answer:</label>
+                    <select id="correct" name="correct" placeholder="1" required="">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+            </div>
+            <div id="mode_option" class="btn-group " data-toggle="buttons">
+                <input type="hidden" name="live_mode" value=<?php 	session_start();
+                echo $_SESSION["live_mode"];?>>
+                <label class="btn btn-primary <?php session_start();
+                echo (isset($_SESSION["live_mode"]) && $_SESSION["live_mode"] == 1 )?"":"active"?>">
+                    <input type="radio" name="mode" id="option_quiz" autocomplete="off">Quiz Mode
+                </label>
+                <label class="btn btn-primary <?php session_start();echo (isset($_SESSION["live_mode"]) && $_SESSION["live_mode"] == 1 )? "active": "";?>">
+                    <input class="collapse" type="radio" name="mode"  id="option_live" autocomplete="off" >Live Mode
+                </label>
+            </div>
+
+            <div class="collapse" id="collapseID">
+                <div class="well">
+                    <label>Seconds to complete</label>
+                    <input id="set_time_out" class="form-control"  style="width:auto;" type="number" min="3" max="1000" name="set_time_out" size="5" value="<?php session_start();echo (isset($_SESSION["timeOut"]) && $_SESSION["timeOut"] >= 1 )? $_SESSION["timeOut"]: 60;?>" required>
+
+                </div>
+            </div>
+
+
+
             <div class="col-lg-12">
                 <div class="row">
-
-                    <div class="col-lg-12">
-
-
-                        <div class="text-center" style="padding:20px 0">
-                            <p>Class Name/number: <?php $class?> </p>
-                            <p>Total connected students: <?php $total_students?> </p>
-                            <p>Gender ratio (M/F): <?php $gender_ratio?></p>
-							<form method="post" action="update_q_no.php">
-								<h3>Set Number: <input type="text" name="set_no" size="5" value="<?php 
-												if(isset($_SESSION['set_no'])) {
-													echo  $_SESSION['set_no'];
-												}
-											?>" required></h3>
-								<input type="submit" value="Update Question Number">
-											<br><br>
-							</form>
-                            <form role="form" method="post" action="post_question.php">
-								<h3>Question number: <?php
-													if(isset($_SESSION["q_no"])) {
-														echo  $_SESSION["q_no"];
-													}
-													else {
-														$q_no = 1;
-														$_SESSION["q_no"] = $q_no;
-														echo $_SESSION["q_no"];
-													}
-														
-												?></h3><br><br>
-                                Correct answer: <input type="text" name="correct" placeholder="1" required><br><br>
-
-                            <div class="multi-choice-form">
-                                    <textarea name="question" placeholder="Question?" style="width: 100%; height: 5%;" required></textarea> <!--question-->
-                                    <div class="multi-choice-container">
-                                        <label for="multi-choice1"><span class="multi-choice-index">1</span></label>
-                                        <textarea placeholder="Multi choice answer" style="width: 100%; height: 5%;" name="multi-choices" id="multi-choice1" required/></textarea><!--answer1-->
-                                        <a class="add-multi-choice btn btn-sm btn-success" href="#">Add</a>
-                                    </div>
-                                    <p><input class="btn btn-primary" type="submit"  value="Save" /><input class="btn btn-success" type="submit" value="Send" /></p>
-                                </form>
-                            </div>
+						<div class="multi-choice-form">
+								<textarea class="form-control" name="question" placeholder="Question?" rows="5" required></textarea> <!--question-->
+								<div class="multi-choice-container">
+									<label for="multi-choice1"><span class="multi-choice-index">1</span></label>
+									<textarea class="form-control" placeholder="Multi choice answer" rows="5" name="multi-choices" id="multi-choice1" required/></textarea><!--answer1-->
+									<a class="add-multi-choice btn btn-sm btn-success" href="#">Add</a>
+								</div>
+							<div>
+								<input class="btn btn-primary pull-right" type="submit" value="Save">
+								<input name="send" class="btn btn-success pull-right" type="submit" value="Send">
+							</div>
 
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
             <!-- /#page-content-wrapper -->
 
         </div>

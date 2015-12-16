@@ -11,25 +11,94 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
 	<link href="css/question_answer.css" rel="stylesheet" media="all" />
-	<body >
-		<div id="container">
-			<div id="wrapper">
+	<script>
+		$(document).ready(function(){
+			$(".alert").hide();
+			// helper function: log message to screen
+			function log(msg) {
+				console.log(msg + '\n');
+			}
+			var host = "ws://159.203.85.220:8080/";
+			ws = new WebSocket(host);
 
-				<!-- Sidebar -->
-				<div id="sidebar-wrapper">
-					<ul class="sidebar-nav">
-						<li style="background-color:#045FB4;">
-							
-							<a style="color:#FFFFFF;" href="student_profile.php">
-								<div class="formatbar">
-									<img src="images/student-32.png">
-									Welcome, <?php 
-									session_start();
+			ws.onopen = function (evt) {
+				log('connected to WebSocket :)');
+			};
 
-									if (isset($_SESSION['reg_username'])) {
-										echo  $_SESSION['reg_username'];
-									} 
-									?>
+			ws.onclose = function (evt) {
+				log('closed WebSocket :(');
+			};
+
+			ws.onerror = function (evt) {
+				log('error on WebSocket :(!');
+			};
+
+			ws.onmessage = function (evt) {
+				<?php session_start();
+				print('var prof_ID ="'.$_SESSION["my_teacher"].'";');
+				print('var my_current_q ="'.$_SESSION["my_current_q"].'";');
+				print('var set_no ="'.$_SESSION["set_no"].'";');?>
+
+				var obj=JSON.parse(evt.data);
+				if (obj.prof == prof_ID && obj.set == set_no) {
+					log('prof match and set :)');
+					if(obj.live_mode == 1){
+						//is this the first question
+						if (my_current_q == obj.question){
+							log('reloading page to get new question');
+							document.location.reload();
+						}
+						$(".alert").show();
+
+						startTimer (parseInt(obj.timeOut.toString()), $('#time'));
+						log('submit page in: '+obj.timeOut+' seconds');
+					}
+				}
+				else {
+					log('msg: ' + evt.data);
+				}
+           };
+       });
+       </script>
+	<script>
+	function startTimer (duration, display) {
+	var timer = duration, minutes, seconds;
+	setInterval(function () {
+	minutes = parseInt(timer / 60, 10);
+	seconds = parseInt(timer % 60, 10);
+
+	minutes = minutes < 10 ? "0" + minutes : minutes;
+	seconds = seconds < 10 ? "0" + seconds : seconds;
+
+	display.text(minutes + ":" + seconds);
+
+	if (--timer < 0) {
+		console.log("time ended!!");
+		//submit answers if time runs out.
+		document.getElementById('submitformans').click(); return false;
+		}
+	}, 1000);}
+	</script>
+
+   <body>
+       <div id="container">
+           <div id="wrapper">
+
+               <!-- Sidebar -->
+               <div id="sidebar-wrapper">
+                   <ul class="sidebar-nav">
+                       <li style="background-color:#045FB4;">
+
+                           <a style="color:#FFFFFF;" href="student_profile.php">
+                               <div class="formatbar">
+                                   <img src="images/student-32.png">
+                                   Welcome, <?php
+                                   session_start();
+
+                                   if (isset($_SESSION['reg_username'])) {
+                                       echo  $_SESSION['reg_username'];
+                                   }
+                                   ?>
 								</div>
 
 							</a>
@@ -56,19 +125,9 @@
 							</a>
 							
 						</li>
-						<li>
-							
-							<a href="#">
-								<div class="formatbar">
-									<img src="images/book.png">
-									Answers</div></a>
-
-								</li>
 								<li>
-
-									<a href="#"><div class="formatbar">
-										<img src="images/letter.png">  Grade</div></a>
-
+									<a href="student_grade.php"><div class="formatbar">
+											<img src="images/letter.png">  Grade</div></a>
 									</li>
 									<li>
 
@@ -103,59 +162,119 @@
 						
 		
 
-<div class="container">
-<div class="jumbotron" >
+<div class="container" >
+
+	<div class="alert alert-warning alert-dismissible fade in" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			<span class="sr-only">Close</span>
+		</button>
+		<strong>New question Added!</strong>
+	</div>
+<div class="jumbotron" STYLE="background-color:#FFFFFF" >
 	<div class="row">
 		<div class="span4">
 	<div class="span2" >
 		<a href="student_question.php" class="btn btn-info btn-lg">
 			<span class="glyphicon glyphicon-circle-arrow-right"> </span> Refresh</a>
 		</div>
-		<?php
-		session_start();
+			<div>Time left: <span id="time">00:00</span> minutes!</div>
+			<?php
+			//we need to check first if this set is in live mode
+			include "db.php";
+			session_start();
+			//we will keep track of questions
+			isset ($_SESSION["my_current_q"])? : 1; //if not set then set to one
+			$set_no = $_SESSION["set_no"];
+			$myteacher = $_SESSION["my_teacher"];
+			$my_current_q = $_SESSION["my_current_q"];
+			$isLive=false;
+			$sql  = "SELECT q_no, correct, set_no, question, a1, a2, a3, a4
+					FROM questions_answers qa JOIN users u on u.id = qa.teacher_id
+					WHERE qa.teacher_id = ".$myteacher." AND qa.set_no = '$set_no'
+					AND qa.q_no = '$my_current_q' AND qa.live_mode = '1'";
 
-		include "db.php";
+			$result = $link->query($sql);
 
+			if($result != false) {
+				$i = $my_current_q;
 
-		$sql  = "SELECT q_no, correct, set_no, question, a1, a2, a3, a4 FROM questions_answers";
-		
-		$result = $link->query($sql);
-		
-		if($result == false) {
-
-			echo '<a href="private.php">Error: cannot execute query</a>';
-			exit;
-		}
-
-		$i = 0;
-
-		while($row=mysqli_fetch_array($result)){
-
-			print '<h1><p>' . htmlspecialchars($row["question"]) . '</p></h1><form method="post" action="submit_question_action.php" name=ans_form>';
+				if ($row = mysqli_fetch_array($result)) {
+					print    "<legend>live mode</legend>";
+					print '<h1><p>' . htmlspecialchars($row["question"]) . '</p></h1><form method="post" action="submit_question_action.php" name=ans_form>';
+					print ' <input type="hidden" name="live_mode" value="1">';
 					//echo "\n";
 					print '<div class="radio">
 				<label>
-					<input type="radio" name="ans'. $i .'" id="student_ans" value=" '. htmlspecialchars($row["a1"]) . ' " checked > A. ' . htmlspecialchars($row["a1"]) . '</label></div>';
-							//echo "\n";
-							print '<div class="radio">
+					<input type="radio" name="ans' . $i . '" id="student_ans" value="1" checked > A. ' . htmlspecialchars($row["a1"]) . '</label></div>';
+					//echo "\n";
+					print '<div class="radio">
 						<label>
-							<input type="radio" name="ans'. $i .'" id="student_ans" value=" ' . htmlspecialchars($row["a2"]) . ' "> B. ' . htmlspecialchars($row["a2"]) . '</label></div>';
-									//echo "\n";
-									print '<div class="radio">
+							<input type="radio" name="ans' . $i . '" id="student_ans" value="2"> B. ' . htmlspecialchars($row["a2"]) . '</label></div>';
+					//echo "\n";
+					print '<div class="radio">
 								<label>
-									<input type="radio" name="ans'. $i .'" id="student_ans" value=" ' . htmlspecialchars($row["a3"]) . ' "> C. ' . htmlspecialchars($row["a3"]) . '</label></div>';
-											//echo "\n";
-											print '<div class="radio">
+									<input type="radio" name="ans' . $i . '" id="student_ans" value="3"> C. ' . htmlspecialchars($row["a3"]) . '</label></div>';
+					//echo "\n";
+					print '<div class="radio">
 										<label>
-											<input type="radio" name="ans'. $i .'" id="student_ans" value=" ' . htmlspecialchars($row["a4"]) . ' "> D. ' . htmlspecialchars($row["a4"]) . '</label>
+											<input type="radio" name="ans' . $i . '" id="student_ans" value="4"> D. ' . htmlspecialchars($row["a4"]) . '</label>
 										</div>';
-										//echo "\n";
-										$_SESSION["q_no"] = $row["q_no"];
-										$_SESSION["correct"] = $row["correct"];
-										$_SESSION["set_no"] = $row["set_no"];
-										$i++;
-									}
+					//echo "\n";
+					$_SESSION["q_no" . $my_current_q] = $row["q_no"];
+					$_SESSION["correct" . $my_current_q] = $row["correct"];
+					$isLive = true;
+				}
+			}
 
+
+echo "<legend></legend>";
+
+			//if set is not in live mode then it is in quiz mode
+	if ($isLive==false) {
+
+	$sql = "SELECT q_no, correct, live_mode, set_no, question, a1, a2, a3, a4
+FROM questions_answers qa JOIN users u on u.id = qa.teacher_id
+WHERE qa.teacher_id = " . $myteacher . " AND qa.set_no = '$set_no' AND qa.live_mode = '0'";
+
+	$result = $link->query($sql);
+
+	if ($result == false) {
+
+		echo '<a href="private.php">Error: cannot execute query</a>';
+		exit;
+	}
+
+	$i = 0;
+
+	while ($row = mysqli_fetch_array($result)) {
+
+		print '<h1><p>' . htmlspecialchars($row["question"]) . '</p></h1><form method="post" action="submit_question_action.php" name=ans_form>';
+		//echo "\n";
+		print '<div class="radio">
+				<label>
+					<input type="radio" name="ans' . $i . '" id="student_ans" value="1" checked > A. ' . htmlspecialchars($row["a1"]) . '</label></div>';
+		//echo "\n";
+		print '<div class="radio">
+						<label>
+							<input type="radio" name="ans' . $i . '" id="student_ans" value="2"> B. ' . htmlspecialchars($row["a2"]) . '</label></div>';
+		//echo "\n";
+		print '<div class="radio">
+								<label>
+									<input type="radio" name="ans' . $i . '" id="student_ans" value="3"> C. ' . htmlspecialchars($row["a3"]) . '</label></div>';
+		//echo "\n";
+		print '<div class="radio">
+										<label>
+											<input type="radio" name="ans' . $i . '" id="student_ans" value="4"> D. ' . htmlspecialchars($row["a4"]) . '</label>
+										</div>';
+		//echo "\n";
+		$_SESSION["q_no" . $i] = $row["q_no"];
+		$_SESSION["correct" . $i] = $row["correct"];
+		$i++;
+
+	}
+	$_SESSION["inum"] = $i;
+}
 
 									?> 
 									

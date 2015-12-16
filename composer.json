@@ -5,5 +5,10 @@
         "vlucas/phpdotenv": "~2.0",
         "cboden/Ratchet": "0.3.*",
         "guzzle/guzzle": "~3.9"
+    },
+    "autoload": {
+        "psr-0": {
+            "pusherApp": "WebSocketServer"
+        }
     }
 }

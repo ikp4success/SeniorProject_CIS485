@@ -1,17 +1,17 @@
 <HTML>
 	<title>Clicker App About Page</title>
-	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link href='css/style.css' rel='stylesheet' type='text/css'>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->
-	<link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
-	<script href="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<!-- gen.js needs to make sure jquery is loaded to work-->
 	<script src="js/gen.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
 	<link href="css/profilestyle.css" rel="stylesheet" media="all" />
-	<body style="background-color:#D8D8D8;">
+	<body style="background-color:#FFFFFF;">
 		<div id="container">
 			<div id="wrapper">
 
@@ -52,15 +52,7 @@
 						</li>
 						<li>
 							
-							<a href="#">
-								<div class="formatbar">
-								<img src="images/book.png">
-								  Answers</div></a>
-							
-						</li>
-						<li>
-							
-							<a href="#"><div class="formatbar">
+							<a href="student_grade.php"><div class="formatbar">
 								<img src="images/letter.png">  Grade</div></a>
 							
 						</li>
@@ -98,11 +90,11 @@
 
 							<div class="col-lg-12">
 							<h1>About Clicker App</h1>
-							<p>Clickers are a great tool to help you engage your students, receive instant feedback from your students about understanding concepts you are teaching, and to get an overall feel for your student audience.This Virtual Clicker is an interactive response system used by instructors in classrooms or meetings for polling audiences with mobile devices,laptops, Pc's</p>
-							<h1>FeedBack</h1>
-							<p>i wanted to utilize active learning smart technology to optimize lecture delivery and enhance student understanding of concepts in real-time. REEF Polling gave students the ability to use their own device which increased the speed and ease of adoption <strong> - John Smith,  Havard University </strong></p>
+							<p>Clickers are a great tool to help you engage your students, receive instant feedback about difficult concepts, and get an overall feel for the level of student comprehension. This Virtual Clicker is an interactive response system used by instructors in classrooms or meetings for polling audiences with PCs and mobile devices.</p>
+							<h1>Feedback</h1>
+							<p>I wanted to utilize active learning smart technology to optimize lecture delivery and enhance student understanding of concepts in real-time. The Clicker App gave students the ability to use their own device which increased the speed and ease of adoption. </br><strong> - John Smith,  Harvard University </strong></p>
 
-							<p>Students simply use their smart devices to answer questions during class. It is inexpensive, easy to use, keeps students engaged and provides valuable feedback to both the instructor and the student regarding areas of confusion.<strong> - Cain Shmoke,  Stanford University </strong></p>
+							<p>Students simply use their smart devices to answer questions during class. It is inexpensive, easy to use, keeps students engaged and provides valuable feedback to both the instructor and the student regarding areas of confusion.</br><strong> - Cain Smoke,  Stanford University </strong></p>
 						
 						
 
@@ -126,7 +118,7 @@
 						  <div class="col-md-3 col-lg-3 " align="center"> <img alt="David Pic" src="images/omgcat2.jpg" class="img-circle img-responsive">
 							<div class="col-lg-12">
 							<p><a href="https://www.linkedin.com/pub/david-jones/9a/b92/608">David Jones</a></p>
-							<p><i>Database Admin/ Software Developer</i></p>
+							<p><i>Database Admin/Software Developer</i></p>
 						</div>
 
 						 </div>
@@ -138,9 +130,9 @@
 
 						 </div>
 
-						   <div class="col-md-3 col-lg-3 " align="center"> <img alt="Gergius Pic" src="images/noprofile.png" class="img-circle img-responsive">
+						   <div class="col-md-3 col-lg-3 " align="center"> <img alt="Gerguis Pic" src="images/noprofile.png" class="img-circle img-responsive">
 							<div class="col-lg-12">
-							<p><a href="https://github.com/G-Square">George Gergius</a></p>
+							<p><a href="https://github.com/G-Square">George Gerguis</a></p>
 							<p><i> Sr. Software Developer</i></p>
 						</div>
 
@@ -152,6 +144,12 @@
 
 		</div>
 		<!-- /#wrapper -->
+
+		<!-- jQuery -->
+		<script src="js/jquery.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
 
 		<!-- Menu Toggle Script -->
 		<script>

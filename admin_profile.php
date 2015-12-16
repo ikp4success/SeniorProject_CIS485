@@ -1,24 +1,24 @@
-<HTML>
+<HTML xmlns="http://www.w3.org/1999/html">
 	<title>Clicker App Admin Page</title>
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link href='css/style.css' rel='stylesheet' type='text/css'>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script> -->
 	<link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
-	<script href="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- gen.js needs to make sure jquery is loaded to work-->
 	<script src="js/gen.js"></script>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
 	<link href="css/profilestyle.css" rel="stylesheet" media="all" />
-	<body style="background-color:#D8D8D8;">
+	<body style="background-color:#FFFFFF;">
 		<div id="container">
 			<div id="wrapper">
 
 				<!-- Sidebar -->
 				<div id="sidebar-wrapper">
 					<ul class="sidebar-nav">
-						<li style="background-color:#045FB4;"><a style="color:#FFFFFF;" href="student_profile.php"> 	<div class="formatbar">
+						<li style="background-color:#045FB4;"><a style="color:#FFFFFF;" href="#"> 	<div class="formatbar">
 
 									<img src="images/professor-32.png">
 							 Welcome, <?php
@@ -61,7 +61,7 @@
 						</li>
 						<li>
 							
-							<a href="#"><div class="formatbar">
+							<a href="admin_grade.php"><div class="formatbar">
 								<img src="images/letter.png">Grades</div></a>
 							
 						</li>
@@ -99,7 +99,7 @@
             <div class="panel-body">
               <div class="row">
                <form method="post" action="admin_profile_action.php">
-				<div class="col-md-3 col-lg-3 " align="center"> <img alt="Professor User Pic" src="images/professor-profile.png" class="img-circle img-responsive"> </div>
+				<div class="col-md-3 col-lg-3 " align="center"> <img alt="Professor User Pic"  width="200" src="images/professor-profile.png" class="img-circle img-responsive"> </div>
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
                     <tbody>
@@ -123,9 +123,9 @@
 
 
 									if($row=mysqli_fetch_array($result)){
-										echo '<tr><td>Username:'.$row["reg_username"].'</td></tr>';
+										echo '<tr><td>Username:		'.$row["reg_username"].'</td></tr>';
 										echo "\n";
-										echo '<tr><td> ID: '.$row["id"].'</td></tr>';
+										echo '<tr><td> ID:		'.$row["id"].'</td></tr>';
 										echo "\n";
 										echo '<tr><td> First Name:</td>
 										<td><input type="text" name="f_name" size="20" value="'.$row["f_name"].'"></td></tr>';
@@ -146,8 +146,7 @@
                      
                     </tbody>
                   </table>
-                  <button type="submit" class="btn btn-primary">Edit Information</button>
-  					<a href="admin_home.php" class="btn btn-primary">Home</a>
+                  <button type="submit" class="btn btn-warning">Edit</button>
                 </div>
               </div>
               </form>

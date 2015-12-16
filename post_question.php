@@ -1,87 +1,64 @@
 <?php
 	session_start();
 	include "db.php";
-	
+
+	$MAX_ANSWERS=4;
+	$MAX_SET=999;
+	$MAX_QUESTIONS_FOR_SET=9999;
+	$emptySql=",\"\"";
 	$teacher_id = $correct = $question = $answer1 = $answer2 = $answer3 = $answer4 = "";
-	$q_no = $set_no = 0;
-	
-	if(isset($_SESSION["teacher_id"]))
-		$teacher_id = $_SESSION["teacher_id"];
-	
-	if(isset($_POST["set_no"]) && is_numeric($_POST["set_no"])) {
-		$_SESSION["set_no"] = $_POST["set_no"];
-		$set_no = intval($_POST["set_no"]);
+	$set_no = 0;
+	$_SESSION["live_mode"] = (isset($_POST["live_mode"]) && intval($_POST["live_mode"]) == 0)? 0 : 1;
+	$_SESSION["timeOut"]= (isset($_POST["set_time_out"]) && intval($_POST["set_time_out"]) > 3)? $_POST["set_time_out"] : 30;
+
+	//if cookie expires/not login teacher_id will be zero or null
+	//need to check this before inserting data
+	if(!isset($_SESSION["teacher_id"])){
+		header("Refresh:0; url=login.php");
+		exit;
 	}
-	
-	$qsql = "SELECT MAX(q_no) AS high FROM questions_answers WHERE set_no = '$set_no' AND teacher_id = '$teacher_id'";
-	
-	$qresult = $link->query($qsql);
-	if($qresult->num_rows > 0) {
-		$row = $qresult->fetch_assoc();
-		$temp = $row["high"];
-		$q_no = intval($temp) + 1;
-		$_SESSION["q_no"] = $q_no + 1;
+	//check correct answer number is within range
+	if (!(isset($_POST["correct"]) && intval($_POST["correct"]) > 0 && intval($_POST["correct"]) <= $MAX_ANSWERS)) {
+		echo '<a href="questions.php">Error: correct answer out of range'.$_POST["correct"].'</a>';
+		exit;
 	}
-	else {
-		$q_no = 1;
-		$_SESSION["q_no"] = $q_no + 1;
+
+	// check set number is correct and within range
+	if(isset($_POST["set_no"]) && intval($_POST["set_no"]) > 0 && intval($_POST["set_no"]) <= $MAX_SET) {
+			$_SESSION["set_no"] = $_POST["set_no"];
+			$set_no = intval($_POST["set_no"]);
+			include "update_q_no.php";
+			update_q($link);
 	}
-	
-	
-	$sql = "INSERT INTO questions_answers(teacher_id, set_no, q_no, correct, question, a1, a2, a3, a4) VALUES('$teacher_id', '$set_no', '$q_no'";
-	
-	if (isset($_POST["correct"]) && !empty($_POST["correct"])) {
-		$correct = $_POST["correct"];
-		$sql .= ",'$correct'";
+	else{
+		echo '<a href="questions.php">Error: set number is incorrect or out of range: '.$_POST["set_no"].'</a>';
+		exit;
 	}
-	else
-		$sql .= ",'$correct'";
-	
-	if (isset($_POST["question"]) && !empty($_POST["question"])) {
-		$question = $_POST["question"];
-		$sql .= ",'$question'";
+
+
+/*	$sql = "INSERT INTO questions_answers
+		(teacher_id, set_no, q_no, correct, question, a1, a2, a3, a4)
+		VALUES(\"".$_SESSION["teacher_id"]."\", \"".$_SESSION["set_no"]."\", \"".$_SESSION["q_no"]."\",\"".$_POST["correct"]."\"";
+*/
+$sql = "INSERT INTO questions_answers
+		(teacher_id, set_no, q_no, live_mode, timeOut, correct, question, a1, a2, a3, a4)
+		VALUES(\"".$_SESSION["teacher_id"]."\", \"".$_SESSION["set_no"]."\", \"".$_SESSION["q_no"]."\", \"".$_SESSION["live_mode"]."\",\"".$_SESSION["timeOut"]."\",\"".$_POST["correct"]."\"";
+
+$array = array("question","multi-choices","multi-choices2","multi-choices3","multi-choices4");
+
+	foreach($array as $item){
+		if (isset($_POST[$item]) && !empty($_POST[$item])) {
+			$sql .= ",\"".$_POST[$item]."\"";
+		}
+		else
+			$sql .= $emptySql;
 	}
-	else
-		$sql .= ",'$question'";
-	
-	if (isset($_POST["multi-choices"]) && !empty($_POST["multi-choices"])) {
-		$answer1 = $_POST["multi-choices"];
-		$sql .= ",'$answer1'";
-	}
-	else
-		$sql .= ",'$answer1'";
-	
-	if (isset($_POST["multi-choices2"]) && !empty($_POST["multi-choices2"])) {
-		$answer2 = $_POST["multi-choices2"];
-		$sql .= ",'$answer2'";
-	}
-	else
-		$sql .= ",'$answer2'";
-	
-	if (isset($_POST["multi-choices3"]) && !empty($_POST["multi-choices3"])) {
-		$answer3 = $_POST["multi-choices3"];
-		$sql .= ",'$answer3'";
-	}
-	else
-		$sql .= ",'$answer3'";
-	
-	if (isset($_POST["multi-choices4"]) && !empty($_POST["multi-choices4"])) {
-		$answer4 = $_POST["multi-choices4"];
-		$sql .= ",'$answer4'";
-	}
-	else
-		$sql .= ",'$answer4'";
-	
 	$sql .= ")";
-	
+
 	$result = $link->query($sql);
 	
 	if($result == false)
 	  echo '<a href="register.php">Error: cannot execute queryo</a>';
 	else
-	  header("Refresh:0; url=questions.php");
-	
-
-	
-
-?>
+		$_SESSION["q_no"]+=1;
+	  	header("Refresh:0; url=questions.php");

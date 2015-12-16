@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <HTML>
 	<title>Clicker App Admin Home Page</title>
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
@@ -10,6 +11,34 @@
 	<script src="js/gen.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<link href="css/simple-sidebar.css" rel="stylesheet" media="all" />
+	<head>
+		<style>
+			h1 {
+				text-align: center;
+			}
+
+			h3 {
+				text-align: center;
+			}
+
+			p {
+				text-align: center;
+			}
+
+			table, th, td {
+				border: 1px solid black;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			th, td {
+				height: 50px;
+				text-align: center;
+			}
+		</style>
+	</head>
 	<body style="background-color: #FFFFFF;">
 		<div id="container">
 			<div id="wrapper">
@@ -24,7 +53,7 @@
 								<img src="images/professor-32.png">
 							 Welcome, <?php 
 						session_start();
-
+						include "db.php";
 						if (isset($_SESSION['reg_username'])) {
 							echo  $_SESSION['reg_username'];
 						} 
@@ -66,7 +95,7 @@
 						</li>
 						<li>
 							
-							<a href="admin_grade.php"><div class="formatbar">
+							<a href="#"><div class="formatbar">
 								<img src="images/letter.png">  Grades</div></a>
 							
 						</li>
@@ -96,48 +125,71 @@
 						<div class="row">
 							<div>
 								<p>
-									<td>Admin User Portal -- UNDER CONSTRUCTION</td>
+									<td>Admin User Portal</td>
 
-								<!-- 	<?php
-									// session_start();
-
-									// include "db.php";
-
-
-									// $allmessage  = "SELECT dateposted,reg_username, reg_msg FROM message";
-									// $result = $link->query($sql);
-
-									//  if($result == false) {
-
-									//    echo '<a href="private.php">Error: cannot execute query</a>';
-									//    exit;
-									//  }
-
-
-									// while($row=mysqli_fetch_array($result)){
-
-									// 	echo '<p>'.$row["dateposted"]."---Message: ".$row["msg"].", UserName: ".$row["username"].'</p>';
-									// 	echo "\n";
-
-
-									// }
-
-									// mysql_free_result($result);
-									// mysql_close($link);
-								?> -->
+								
 							</p>
 
 						</div>
-						<div class="col-lg-12">
-							<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Hide Menu</a>
-							<h1>WELCOME</h1>
-							<ul>
-								<li>To create a new question set, click on "Create Question Set" in the side menu.</li>
-								<li>To edit a question set, click on "Edit Questions/Answers"</li>
-								<li>To view student grades, click on "Grades".</li>
-							</ul>
-							
-						</div>
+
+								<div id="totalStudents" >
+													
+													Total Number of Student Registered: <?php 
+													include "db.php"; 
+													$sql="SELECT * FROM  users where admin_yn = 'N'"; 
+													$result = $link->query($sql);
+													echo $result->num_rows;
+													
+
+													?>
+
+												</div>
+												<div id="totalStudentsanswered" >
+													
+													Total Number of Student Participated: <?php 
+													include "db.php"; 
+													$sql="SELECT DISTINCT stu_id FROM poll_results"; 
+													$result = $link->query($sql);
+													echo $result->num_rows;
+													
+
+													?>
+
+												</div>
+
+												<div id="totalStudentscorrect" >
+													
+													Total Number of Student with Correct Answers: <?php 
+													include "db.php"; 
+													$sql="SELECT DISTINCT `stu_id` FROM `poll_results` WHERE `correct_yn` ='Y'"; 
+													$result = $link->query($sql);
+													echo $result->num_rows;
+													
+
+													?>
+
+												</div>
+
+												<div id="totalStudentsfail" >
+													
+													Total Number of Student with Wrong Answers: <?php 
+													include "db.php"; 
+													$sql="SELECT DISTINCT `stu_id` FROM `poll_results` WHERE `correct_yn` ='N'"; 
+													$result = $link->query($sql);
+													echo $result->num_rows;
+													
+
+													?>
+
+												</div>
+
+												<div  class="span2" type="submit">
+		<a class="btn btn-info btn-lg confirmation"  href="admin_grade.php">
+			<span class="glyphicon glyphicon-circle-arrow-right"> </span> Go Back</a>
+		</div>
+						
+
+
 					</div>
 				</div>
 			</div>
