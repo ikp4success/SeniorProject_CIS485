@@ -2,11 +2,11 @@
 
 
 
-Authors
+**Authors**
 
 Immanuel George, David Jones, George Gerguis, Dan Grinblat
 
-About
+**About**
 
 Clickers are a great tool to help you engage your students, receive instant feedback, and 
 
@@ -16,21 +16,21 @@ system used by instructors in classrooms or meetings for polling audiences with 
 
 devices. The application consists of both a website and Android app.
 
-Website
+**Website**
 
-http://159.203.85.220/
+#out of commision
 
-GitHub
+**GitHub**
 
 https://github.com/ikp4success/SeniorProject_CIS485
 
-Languages
+**Languages**
 
 PHP, HTML, CSS, Javascript, SQL, Java (Android)
 
 Libraries, Scripts, Systems, and Other Specs
 
-Design
+**Design**
 
 Bootstrap – Website theme that allows for a grid layout and mobile formatting.
 
