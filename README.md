@@ -71,10 +71,6 @@ WebView – Displays and confines the JavaScript-enabled web page.
 API 15 – Support for devices as old as Android 4.0.3 (Ice Cream Sandwich) and up.
 
 Images
-
-      
-
-
-
+https://github.com/ikp4success/SeniorProject_CIS485/blob/master/images/ccapp_home.jpg?raw=true
 
 
